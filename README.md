@@ -101,14 +101,11 @@ The app will now begin to show data being received and automatically save a CSV 
 - **Wrong device auto-selected**  
   The script prefers Silicon Labs CP2102 (VID:PID `10C4:EA60`). If you have multiple adapters connected, just answer **n** and it will move to the next candidate.
 
-- **Different filename**  
-  If you renamed the script (e.g., `seaward_capture.py`), commands are the same—just change the filename in the invocation.
-
 ---
 
 ## How it works (short technical version)
 
-- Opens the confirmed `/dev/ttyUSB*` at **9600 8N1** (required by the Seaward protocol.
+- Opens the confirmed `/dev/ttyUSB*` at **9600 8N1** (required by the Seaward protocol).
 - While waiting for *first byte*, it silently sends:
   - `SYST:REM\r\n`
   - `MEM:DATA? ALL\r\n`
