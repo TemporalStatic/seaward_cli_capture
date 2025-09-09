@@ -21,7 +21,7 @@ SERIAL_TIMEOUT  = 0.1                 # non-blocking-ish
 
 REQ_PERIOD  = 1.0    # seconds between request retries 
 QUIET_SECS  = 5.0    # applies only AFTER first byte is seen
-CAPTURE_DIR = "captures"
+CAPTURE_DIR = os.path.join("captures", "seaward")
 
 CSV_REQ_LINES = (b"SYST:REM\r\n", b"MEM:DATA? ALL\r\n")
 
@@ -96,7 +96,7 @@ def device_key(sig: dict) -> str:
     return sig.get("hwid") or sig.get("device") or repr(sig)
 
 def detect_seaward_device() -> Dict[str, Optional[str]]:
-    print("Probing for Seaward 200/210 meter - please connect it now…\n")
+    print("Probing for Seaward 200/210 meter. Connect it now…\n")
     ignored: set[str] = set()
     try:
         def get_candidates():
